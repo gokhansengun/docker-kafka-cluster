@@ -1,0 +1,48 @@
+version: "2"
+
+services:
+
+  zookeeper-01:
+    image: gsengun/zookeeper:3.4.9
+    volumes:
+      - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg:ro
+      - ./Zookeeper/1.id:/opt/zookeeper-3.4.9/data/myid
+
+  zookeeper-02:
+    image: gsengun/zookeeper:3.4.9
+    volumes:
+      - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg:ro
+      - ./Zookeeper/2.id:/opt/zookeeper-3.4.9/data/myid
+
+  zookeeper-03:
+    image: gsengun/zookeeper:3.4.9
+    volumes:
+      - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg:ro
+      - ./Zookeeper/3.id:/opt/zookeeper-3.4.9/data/myid
+
+  kafka-01:
+    image: gsengun/kafka:0.10.1.0
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka-01
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-01:2181,zookeeper-02:2181,zookeeper-03:2181
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_BROKER_ID=1
+
+  kafka-02:
+    image: gsengun/kafka:0.10.1.0
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka-02
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-01:2181,zookeeper-02:2181,zookeeper-03:2181
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_BROKER_ID=2
+
+  kafka-03:
+    image: gsengun/kafka:0.10.1.0
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka-03
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-01:2181,zookeeper-02:2181,zookeeper-03:2181
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_BROKER_ID=3
+
+  kafka-cat:
+    image: ryane/kafkacat
