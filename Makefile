@@ -14,9 +14,10 @@ clean:
 	docker-compose down -v
 
 query-cluster:
-	docker-compose run --rm kafka-cat -L -b kafka-02,kafka-03
+	@docker-compose run --rm kafka-cat -L -b kafka-01,kafka-02,kafka-03
 
 produce-dataset:
+	@echo "Producing 1000 messages on test-data topic"
 	@./scripts/produce-data.sh test-data 1000
 	@echo "Produced 1000 messages on test-data topic"
 
