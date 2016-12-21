@@ -23,8 +23,6 @@ produce-dataset:
 
 consume-dataset:
 	@echo "You need to press Ctrl+C to exit after consuming"
-	@echo "Now press any key to continue"
-	@read -n 1
 	@./scripts/consume-data.sh test-data 1000
 
 ps:

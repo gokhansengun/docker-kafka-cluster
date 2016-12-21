@@ -3,22 +3,22 @@ version: "2"
 services:
 
   zookeeper-01:
-    image: gsengun/zookeeper:3.4.9
+    image: gsengun/zookeeper:3.4.9.1
     volumes:
       - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg:ro
-      - ./Zookeeper/1.id:/opt/zookeeper-3.4.9/data/myid
+      - ./Zookeeper/1.id:/opt/zookeeper-3.4.9/data/myid:ro
 
   zookeeper-02:
-    image: gsengun/zookeeper:3.4.9
+    image: gsengun/zookeeper:3.4.9.1
     volumes:
       - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg:ro
-      - ./Zookeeper/2.id:/opt/zookeeper-3.4.9/data/myid
+      - ./Zookeeper/2.id:/opt/zookeeper-3.4.9/data/myid:ro
 
   zookeeper-03:
-    image: gsengun/zookeeper:3.4.9
+    image: gsengun/zookeeper:3.4.9.1
     volumes:
       - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg:ro
-      - ./Zookeeper/3.id:/opt/zookeeper-3.4.9/data/myid
+      - ./Zookeeper/3.id:/opt/zookeeper-3.4.9/data/myid:ro
 
   kafka-01:
     image: gsengun/kafka:0.10.1.0
