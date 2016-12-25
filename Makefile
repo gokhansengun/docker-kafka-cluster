@@ -17,7 +17,9 @@ clean:
 
 query-zookeeper-cluster:
 	@docker-compose exec zookeeper-01 bash -c "echo 'stat' | nc zookeeper-01 2181"
+	@echo "\n*********\n"
 	@docker-compose exec zookeeper-01 bash -c "echo 'stat' | nc zookeeper-02 2181"
+	@echo "\n*********\n"
 	@docker-compose exec zookeeper-01 bash -c "echo 'stat' | nc zookeeper-03 2181"
 
 query-kafka-cluster:
@@ -29,8 +31,9 @@ produce-dataset:
 	@echo "Produced 1000 messages on test-data topic"
 
 consume-dataset:
-	@echo "You need to press Ctrl+C to exit after consuming"
-	@./scripts/consume-data.sh test-data 1000
+	@echo "Consuming all the messages - unread messages too"
+	@./scripts/consume-data.sh test-data
+	@echo "Consumed all the messages"
 
 ps:
 	docker-compose ps

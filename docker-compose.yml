@@ -6,18 +6,21 @@ services:
     image: gsengun/zookeeper:3.5.0-alpha
     volumes:
       - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.5.0-alpha/conf/zoo.cfg:ro
+      - ./Zookeeper/zoo.dynamic.1.cfg:/opt/zookeeper-3.5.0-alpha/conf/zoo.dynamic.cfg
       - ./Zookeeper/1.id:/opt/zookeeper-3.5.0-alpha/data/myid:ro
 
   zookeeper-02:
     image: gsengun/zookeeper:3.5.0-alpha
     volumes:
       - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.5.0-alpha/conf/zoo.cfg:ro
+      - ./Zookeeper/zoo.dynamic.2.cfg:/opt/zookeeper-3.5.0-alpha/conf/zoo.dynamic.cfg
       - ./Zookeeper/2.id:/opt/zookeeper-3.5.0-alpha/data/myid:ro
 
   zookeeper-03:
     image: gsengun/zookeeper:3.5.0-alpha
     volumes:
       - ./Zookeeper/zoo.cfg:/opt/zookeeper-3.5.0-alpha/conf/zoo.cfg:ro
+      - ./Zookeeper/zoo.dynamic.3.cfg:/opt/zookeeper-3.5.0-alpha/conf/zoo.dynamic.cfg
       - ./Zookeeper/3.id:/opt/zookeeper-3.5.0-alpha/data/myid:ro
 
   kafka-01:
