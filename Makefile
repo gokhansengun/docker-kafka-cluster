@@ -22,6 +22,7 @@ setup-zookeeper-cluster:
 	@sleep 2
 
 clean:
+	docker-compose kill ## to stop containers immediately
 	docker-compose down -v
 
 query-zookeeper-cluster:
